@@ -12,9 +12,10 @@
     align-items: center;
   }
 
-  &__copyright:not(:last-child) {
-    @include mq(mobile-only) {
-      //   margin-bottom: 10px;
+  &__link {
+    text-decoration: underline;
+    &:visited {
+      color: currentColor;
     }
   }
 }
