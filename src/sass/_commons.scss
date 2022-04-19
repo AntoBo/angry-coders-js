@@ -22,3 +22,11 @@ link {
     list-style: none;
     fill: $main-text-color;
 }
+
+.section {
+    padding: 20px 0;
+
+    @include mq(tablet) {
+        padding: 60px 0;
+    }
+}
