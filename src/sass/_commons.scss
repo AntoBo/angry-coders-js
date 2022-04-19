@@ -20,24 +20,5 @@ link {
 
 .list {
     list-style: none;
-    fill: $text-color-main;
-}
-
-.visually-hidden {
-    position: fixed;
-    transform: scale(0);
-}
-
-.input {
-    outline: none;
-
-    &:hover,
-    &:focus,
-    &:not(:placeholder-shown) {
-        border: 1px solid $color-accent;
-    }
-}
-
-.no-scroll {
-    overflow: hidden;
+    fill: $main-text-color;
 }
