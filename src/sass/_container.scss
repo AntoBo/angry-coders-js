@@ -1,0 +1,15 @@
+.container {
+  margin: 0 auto;
+  padding: 0 20px;
+
+  max-width: 480px;
+
+  @include mq(tablet) {
+    max-width: $tablet-res;
+    padding: 0 32px;
+  }
+
+  @include mq(desktop) {
+    max-width: $desktop-res;
+  }
+}

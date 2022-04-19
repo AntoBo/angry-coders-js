@@ -1,0 +1,12 @@
+.button {
+  display: block;
+  border: 1px solid $white-btn-color;
+  min-width: 130px;
+  margin: 0 auto;
+  padding: 14px;
+  background-color: $accent-btn-color;
+
+  text-transform: uppercase;
+
+  cursor: pointer;
+}
