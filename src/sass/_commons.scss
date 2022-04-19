@@ -1,0 +1,43 @@
+body {
+    background-color: $main-bg-color;
+    font-family: Roboto, sans-serif;
+
+    @include font-style(12px, 500, 1.67, null, $main-text-color);
+}
+
+link {
+    text-decoration: none;
+
+    &:focus-visible {
+        outline: none;
+    }
+
+    &:visited {
+        text-decoration: none;
+        color: currentColor;
+    }
+}
+
+.list {
+    list-style: none;
+    fill: $text-color-main;
+}
+
+.visually-hidden {
+    position: fixed;
+    transform: scale(0);
+}
+
+.input {
+    outline: none;
+
+    &:hover,
+    &:focus,
+    &:not(:placeholder-shown) {
+        border: 1px solid $color-accent;
+    }
+}
+
+.no-scroll {
+    overflow: hidden;
+}
