@@ -3,6 +3,7 @@ body {
     font-family: Roboto, sans-serif;
 
     @include font-style(12px, 500, 1.67, null, $main-text-color);
+    background-color: gray;
 }
 
 link {
