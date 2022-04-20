@@ -1,3 +1,11 @@
+body .tui-pagination {
+  height: 40px;
+  margin: 60px 0;
+  @include mq(mobile-only) {
+    margin: 40px 0;
+  }
+}
+
 body .tui-pagination .tui-page-btn {
   //   display: inline-block;
   align-items: center;
@@ -5,7 +13,6 @@ body .tui-pagination .tui-page-btn {
   width: 40px;
   padding: 0;
   border: none;
-  border-left: none;
   border-radius: 5px;
 
   @include font-style(12px, 500, 40px, null, $main-text-color);
@@ -20,6 +27,8 @@ body .tui-pagination .tui-page-btn {
   &.tui-is-selected {
     color: $white-text-color;
     background-color: $accent-btn-color;
+    border-left: none;
+    border-right: none;
   }
 
   & .tui-ico-ellip {
@@ -30,5 +39,12 @@ body .tui-pagination .tui-page-btn {
   &.tui-first,
   &.tui-last {
     display: none;
+  }
+
+  &.tui-prev-is-ellip,
+  &.tui-next-is-ellip {
+    @include mq(mobile-only) {
+      display: none;
+    }
   }
 }
