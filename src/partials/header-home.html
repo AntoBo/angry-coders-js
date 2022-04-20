@@ -6,15 +6,15 @@
       ><span class="header__logo">Filmoteka</span>
     </a>
     <nav>
-      <ul>
-        <li class="header__nav"><a href="/index.html">home</a></li>
-        <li class="header__nav"><a href="/library.html">my library</a></li>
+      <ul class="header__nav">
+        <li><a href="/index.html" class="header__list current">home</a></li>
+        <li><a href="/library.html" class="header__list">my library</a></li>
       </ul>
     </nav>
-    <form>
-      <input type="search" name="search" placeholder="Поиск фильмов" />
-      <button type="button">
-        <svg>
+    <form class="header__form">
+      <input class="header__input" type="search" name="search" placeholder="Поиск фильмов  " />
+      <button class="header__btn" type="button">
+        <svg class="header__search">
           <use href="./images/icons.svg#icon-search" width="12" height="12"></use>
         </svg>
       </button>

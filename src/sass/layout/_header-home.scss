@@ -1,6 +1,11 @@
 .header {
-  max-width: 320px;
+  position: absolute;
+  width: $min-mobile-res;
+  height: 230px;
+  left: 0px;
+  top: 0px;
   padding: 0;
+
   background-image: url('../images/bg-header/bg-home-tel.jpg');
 
   @include mq(retina) {
@@ -8,7 +13,8 @@
   }
 
   @include mq(tablet) {
-    max-width: 768px;
+    min-width: $tablet-res;
+    background-size: cover;
     background-image: url('../images/bg-header/bg-home-tabl.jpg');
 
     @include mq(retina) {
@@ -16,8 +22,9 @@
     }
   }
 
-  @include mq(desktop) {
-    max-width: 1024px;
+  @include mq(desktop-only) {
+    min-width: $desktop-res;
+    background-size: cover;
     background-image: url('../images/bg-header/bg-home-dt.jpg');
 
     @include mq(retina) {
@@ -35,9 +42,126 @@
 
   &__nav {
     display: flex;
+    justify-content: flex-end;
+    margin-top: 44px;
+  }
+
+  &__list {
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 14px;
+    text-transform: uppercase;
+    color: $white-text-color;
+
+    &:last-child {
+      margin-left: 40px;
+    }
+  }
+
+  &__btn {
+    width: 12px;
+    height: 12px;
+    position: absolute;
+    left: 284px;
+    top: 122px;
+    background-color: inherit;
+    border: none;
+  }
+  &__search {
+    width: 12px;
+    height: 12px;
+    left: 1px;
+    top: 0px;
+
+    @include mq(mobile-only) {
+      position: absolute;
+    }
+  }
+
+  &__form {
+    display: flex;
+
+    @include mq(tablet) {
+      position: absolute;
+      width: 336px;
+      height: 20px;
+      left: 226px;
+      top: -13px;
+    }
+
+    @include mq(desktop) {
+      @include mq(tablet) {
+        position: absolute;
+        width: 336px;
+        height: 20px;
+        left: 226px;
+        top: -13px;
+      }
+    }
+  }
+
+  &__input {
+    position: absolute;
+    width: 280px;
+    height: 20px;
+    left: 20px;
+    top: 118px;
+
+    border-block-start: unset;
+    border-block-start-width: 0.5px;
+    border-block-start-style: solid;
+    border-block-start-color: $white-text-color;
+    border-left: none;
+    border-right: none;
+    border-top: none;
+
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 16px;
+    display: flex;
+    align-items: center;
+
+    background-color: inherit;
+
+    &::placeholder {
+      color: $white-text-color;
+    }
   }
 }
 
 .header__logo {
   display: none;
+
+  @include mq(tablet) {
+    position: absolute;
+
+    left: 55px;
+    top: 47px;
+    left: 64px;
+    top: 32px;
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 30px;
+    line-height: 35px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    color: $white-text-color;
+  }
+}
+
+.current::after {
+  content: '';
+
+  margin-left: inherit;
+  width: 34px;
+  height: 3px;
+  display: block;
+  border-radius: 2px;
+  background-color: $accent-text-color;
 }
