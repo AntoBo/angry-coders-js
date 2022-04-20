@@ -10,8 +10,12 @@
 .card {
   &__wrapper {
     @include mq(mobile-only) {
-      margin: 0 auto 20px auto;
+      margin: 0 auto;
       width: 280px;
+
+      &:not(:last-child) {
+        margin-bottom: 20px;
+      }
     }
 
     @include mq(tablet) {
