@@ -1,0 +1,34 @@
+body .tui-pagination .tui-page-btn {
+  //   display: inline-block;
+  align-items: center;
+  height: 40px;
+  width: 40px;
+  padding: 0;
+  border: none;
+  border-left: none;
+  border-radius: 5px;
+
+  @include font-style(12px, 500, 40px, null, $main-text-color);
+  text-align: center;
+  //   vertical-align: bottom;
+
+  &.tui-prev,
+  &.tui-next {
+    background-color: $grey-btn-color;
+  }
+
+  &.tui-is-selected {
+    color: $white-text-color;
+    background-color: $accent-btn-color;
+  }
+
+  & .tui-ico-ellip {
+    margin-top: 0;
+    vertical-align: middle;
+  }
+
+  &.tui-first,
+  &.tui-last {
+    display: none;
+  }
+}
