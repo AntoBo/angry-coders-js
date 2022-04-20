@@ -5,6 +5,7 @@ body .tui-pagination .tui-page-btn {
   width: 40px;
   padding: 0;
   border: none;
+  border-left: none;
   border-radius: 5px;
 
   @include font-style(12px, 500, 40px, null, $main-text-color);
