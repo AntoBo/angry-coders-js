@@ -1,7 +1,28 @@
+.gallery__container {
+  @include mq(tablet) {
+    margin-left: -16px;
+    margin-top: -16px;
+    display: flex;
+    flex-wrap: wrap;
+  }
+}
+
 .card {
   &__wrapper {
-    width: 280px;
-    margin: 0 auto;
+    @include mq(mobile-only) {
+      margin: 0 auto 20px auto;
+      width: 280px;
+    }
+
+    @include mq(tablet) {
+      margin-left: 16px;
+      margin-top: 16px;
+      flex-basis: calc((100% - 48px) / 2);
+    }
+
+    @include mq(desktop) {
+      flex-basis: calc((100% - 48px) / 3);
+    }
   }
 
   &__img {
