@@ -16,7 +16,7 @@
 }
 
 .modal {
-  padding: 48px 20px 40px 20px;
+  padding: 40px 20px;
 
   position: absolute;
   top: 50%;
@@ -28,7 +28,7 @@
   background-color: #fff;
 
   @include mq(tablet-only) {
-    padding: 40px 72px 40px 36px;
+    padding: 40px 36px;
     display: flex;
 
     max-width: 704px;
@@ -94,10 +94,14 @@
 
   &__details-item {
     display: flex;
+    &:not(:last-child) {
+      margin-bottom: 8px;
+    }
   }
 
   &__details-name {
     color: $list-text-color;
+    width: 50%;
   }
 
   &__details-rating1 {
