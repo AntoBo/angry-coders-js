@@ -1,0 +1,43 @@
+.header {
+  max-width: 320px;
+  padding: 0;
+  background-image: url('../images/bg-header/bg-home-tel.jpg');
+
+  @include mq(retina) {
+    background-image: url('../images/bg-header/bg-home-tel@2x.jpg');
+  }
+
+  @include mq(tablet) {
+    max-width: 768px;
+    background-image: url('../images/bg-header/bg-home-tabl.jpg');
+
+    @include mq(retina) {
+      background-image: url('../images/bg-header/bg-home-tabl@2x.jpg');
+    }
+  }
+
+  @include mq(desktop) {
+    max-width: 1024px;
+    background-image: url('../images/bg-header/bg-home-dt.jpg');
+
+    @include mq(retina) {
+      background-image: url('../images/bg-header/bg-home-dt@2x.jpg');
+    }
+  }
+
+  &__icon {
+    position: absolute;
+    width: 24px;
+    height: 24px;
+    left: 20px;
+    top: 40px;
+  }
+
+  &__nav {
+    display: flex;
+  }
+}
+
+.header__logo {
+  display: none;
+}
