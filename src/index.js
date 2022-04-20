@@ -1,13 +1,15 @@
 import './sass/styles.scss';
-import Pagination from 'tui-pagination';
-import 'tui-pagination/dist/tui-pagination.css';
+import Modal from './js/modal';
 
-import * as TUI from './js/pagination';
+//modal works!
+new Modal();
 
 //TUI pagination for markup and styles
+import Pagination from 'tui-pagination';
+import 'tui-pagination/dist/tui-pagination.css';
+import * as TUI from './js/pagination';
 const pagination = new Pagination('pagination', TUI.getOptions(500));
-
-//==============================
+//TUI pagination ==============================
 
 import axios from 'axios';
 axios.defaults.baseURL = 'https://api.themoviedb.org/3/';
