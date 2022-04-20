@@ -47,6 +47,11 @@ body .tui-pagination .tui-page-btn {
     display: none;
   }
 
+  & .tui-ico-prev {
+    // background: none;
+    background-image: url('/images/icons.svg');
+  }
+
   &.tui-prev-is-ellip,
   &.tui-next-is-ellip {
     @include mq(mobile-only) {
