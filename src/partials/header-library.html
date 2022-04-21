@@ -1,22 +1,20 @@
-<header>
-  <div>
-    <nav>
-      <ul>
-        <li>
-          <a href="/index.html">
-            <svg width="16" height="12">
-              <use href="./images/icons.svg#icon-film"></use>
-            </svg>
-            Filmoteka</a
-          >
-        </li>
-        <li><a href="/index.html">home</a></li>
-        <li><a href="/library.html">my library</a></li>
+<header class="section header">
+  <div class="container">
+    <nav class="header__nav__logo">
+      <a href="/index.html" class="header__nav__link">
+        <svg class="header__icon">
+          <use href="/images/icons.svg#icon-film"></use>
+        </svg>
+        <span class="header__logo">Filmoteka</span>
+      </a>
+      <ul class="header__nav__pages">
+        <li><a href="/index.html" class="header__list current">home</a></li>
+        <li><a href="/library.html" class="header__list">my library</a></li>
       </ul>
     </nav>
-    <div>
-      <button type="button">Watched</button>
-      <button type="button">queue</button>
+    <div class="header__library__btn">
+      <button class="btn__wached" type="button">Watched</button>
+      <button class="btn__queue" type="button">queue</button>
     </div>
   </div>
 </header>
