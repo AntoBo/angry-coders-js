@@ -2,15 +2,20 @@ import './sass/styles.scss';
 import Modal from './js/modal';
 import fetchAPI from './js/fetch';
 
-import templateCard from './templates/card';
+import templateCard from './templates/cardMarkup';
 
 //fetch movies on load page
 function onLoadPage(page) {
   fetchAPI
     .fetchTrendingMovies(page)
     .then(data => {
-      // console.log(data.data.results);
+      console.log(data.data.results);
+      data.data.results.forEach(el => {
+        el.release_date = el.release_date.slice(0, 4);
+      });
       document.querySelector('.gallery__container').innerHTML = templateCard(data.data.results);
+      //modal works!
+      new Modal(data.data.results);
     })
     .catch(err => {
       err;
@@ -30,9 +35,6 @@ function onSearchSubmit(page, query) {
     });
 }
 // onSearchSubmit(1, 'terminator');
-
-//modal works!
-new Modal();
 
 //TUI pagination for markup and styles
 import Pagination from 'tui-pagination';

@@ -9,6 +9,7 @@
 
 .card {
   &__wrapper {
+    cursor: pointer;
     @include mq(mobile-only) {
       margin: 0 auto;
       width: 280px;
@@ -32,6 +33,7 @@
   &__img {
     margin-bottom: 10px;
     width: 100%;
+    border-radius: 5px;
   }
 
   &__title {
