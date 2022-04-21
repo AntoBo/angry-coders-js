@@ -11,7 +11,7 @@ export default class fetchAPI {
       const response = await axios.get(this.BASE_URL_TERNDING, {
         params: {
           api_key: this.API_KEY,
-          page: page,
+          page,
         },
       });
       return response;

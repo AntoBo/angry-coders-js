@@ -2,7 +2,7 @@ const container = document.getElementById('pagination');
 function getOptions(totalItems) {
   return {
     totalItems: totalItems,
-    itemsPerPage: 40,
+    itemsPerPage: 20,
     visiblePages: 5,
     page: 1,
     centerAlign: true,
