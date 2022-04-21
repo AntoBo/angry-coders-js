@@ -6,16 +6,16 @@ import templateCard from './templates/cardMarkup';
 
 //fetch movies on load page
 function onLoadPage(page) {
-  fetchAPI
-    .fetchTrendingMovies(page)
+  Promise.all([fetchAPI.fetchTrendingMovies(page), fetchAPI.fetchGenres()])
     .then(data => {
-      console.log(data.data.results);
-      data.data.results.forEach(el => {
+      console.log(data[0].data.results);
+      data[0].data.results.forEach(el => {
         el.release_date = el.release_date.slice(0, 4);
       });
-      document.querySelector('.gallery__container').innerHTML = templateCard(data.data.results);
+      document.querySelector('.gallery__container').innerHTML = templateCard(data[0].data.results);
       //modal works!
-      new Modal(data.data.results);
+      new Modal(data[0].data.results);
+      console.log('genres array: ', data[1].data.genres);
     })
     .catch(err => {
       err;
