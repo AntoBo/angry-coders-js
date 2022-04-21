@@ -20,7 +20,7 @@
             </li>
             <li class="film__details-item">
               <span class="film__details-name">Genre</span>
-              <span class="film__details-genre">{{genre_ids}}</span>
+              <span class="film__details-genre">{{#each genre_ids}}{{this}}{{#if @last}}{{else}},&nbsp;{{/if}}{{/each}}</span>
             </li>
           </ul>
         </div>
