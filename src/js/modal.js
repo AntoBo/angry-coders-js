@@ -9,8 +9,6 @@ export default class Modal {
     this.containerOfCards.addEventListener('click', this.modalOpen.bind(this));
     this.modalCloseEl.addEventListener('click', this.modalClose.bind(this));
     this.backdrop.addEventListener('click', this.onBackdropClick.bind(this));
-
-    console.log('this.backdrop in CONSTRUCTOR is: ', this.backdrop);
   }
 
   modalOpen(event) {
