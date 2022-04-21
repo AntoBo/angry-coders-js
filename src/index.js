@@ -7,7 +7,7 @@ function onLoadPage(page) {
   fetchAPI
     .fetchTrendingMovies(page)
     .then(data => {
-      console.log(data.data.results);
+      console.log(data.data);
     })
     .catch(err => {
       err;
@@ -26,7 +26,7 @@ function onSearchSubmit(page, query) {
       err;
     });
 }
-onSearchSubmit(1, 'terminator');
+// onSearchSubmit(1, 'terminator');
 
 //modal works!
 new Modal();

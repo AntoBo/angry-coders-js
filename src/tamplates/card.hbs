@@ -1,0 +1,13 @@
+<ul class="gallery__container">
+{{#each results}}
+<li class="card__wrapper">
+        <img src="./images/1sm.jpg" alt="bla bla" class="card__img" />
+        <h2 class="card__title">{{original_title}}</h2>
+        <div class="card__content-wrapper">
+          <p class="card__genre">{{genre_ids}}</p>
+          &nbsp;|&nbsp;
+          <p class="card__year">{{release_date}}</p>
+        </div>
+</li>
+{{/each}}
+</ul>
