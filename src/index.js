@@ -1,11 +1,11 @@
 import './sass/styles.scss';
 import Modal from './js/modal';
-import * as moviedbAPI from './js/fetch';
+import fetchAPI from './js/fetch';
 
 //fetch movies on load page
-function onLoadPage() {
-  moviedbAPI
-    .fetchTrendingMovies(1)
+function onLoadPage(page) {
+  fetchAPI
+    .fetchTrendingMovies(page)
     .then(data => {
       console.log(data.data.results);
     })
@@ -13,9 +13,20 @@ function onLoadPage() {
       err;
     });
 }
-onLoadPage();
+onLoadPage(1);
 
-// moviedbAPI.fetchMoviesByQuery(1, 'hello');
+//fetch movies on load page
+function onSearchSubmit(page, query) {
+  fetchAPI
+    .fetchMoviesByQuery(page, query)
+    .then(data => {
+      console.log(data.data.results);
+    })
+    .catch(err => {
+      err;
+    });
+}
+onSearchSubmit(1, 'terminator');
 
 //modal works!
 new Modal();

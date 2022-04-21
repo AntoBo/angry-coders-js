@@ -1,32 +1,36 @@
 import axios from 'axios';
 
-async function fetchTrendingMovies(page) {
-  try {
-    const response = await axios.get('https://api.themoviedb.org/3/trending/movie/week', {
-      params: {
-        api_key: '313da384ffe4ec90efea6fc8b4aa73ee',
-        page: page,
-      },
-    });
-    return response;
-  } catch (error) {
-    console.log(error);
+export default class fetchAPI {
+  static API_KEY = '313da384ffe4ec90efea6fc8b4aa73ee';
+  static BASE_URL_TERNDING = 'https://api.themoviedb.org/3/trending/movie/week';
+  static BASE_URL_SEARCH = 'https://api.themoviedb.org/3/search/movie';
+
+  static async fetchTrendingMovies(page) {
+    try {
+      const response = await axios.get(this.BASE_URL_TERNDING, {
+        params: {
+          api_key: this.API_KEY,
+          page: page,
+        },
+      });
+      return response;
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  static async fetchMoviesByQuery(page, query) {
+    try {
+      const response = await axios.get(this.BASE_URL_SEARCH, {
+        params: {
+          api_key: this.API_KEY,
+          page,
+          query,
+        },
+      });
+      return response;
+    } catch (error) {
+      console.log(error);
+    }
   }
 }
-
-async function fetchMoviesByQuery(page, query) {
-  try {
-    const response = await axios.get('https://api.themoviedb.org/3/trending/movie/week', {
-      params: {
-        api_key: '313da384ffe4ec90efea6fc8b4aa73ee',
-        page,
-        query,
-      },
-    });
-    return response;
-  } catch (error) {
-    console.log(error);
-  }
-}
-
-export { fetchTrendingMovies, fetchMoviesByQuery };
