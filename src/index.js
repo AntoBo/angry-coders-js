@@ -2,12 +2,15 @@ import './sass/styles.scss';
 import Modal from './js/modal';
 import fetchAPI from './js/fetch';
 
+import templateCard from './templates/card';
+
 //fetch movies on load page
 function onLoadPage(page) {
   fetchAPI
     .fetchTrendingMovies(page)
     .then(data => {
-      console.log(data.data.results);
+      // console.log(data.data.results);
+      document.querySelector('.gallery__container').innerHTML = templateCard(data.data.results);
     })
     .catch(err => {
       err;
@@ -26,7 +29,7 @@ function onSearchSubmit(page, query) {
       err;
     });
 }
-onSearchSubmit(1, 'terminator');
+// onSearchSubmit(1, 'terminator');
 
 //modal works!
 new Modal();
