@@ -1,26 +1,31 @@
 .header {
   height: 230px;
-
+  background-size: cover;
   background-image: url('../images/bg-header/bg-home-tel.jpg');
 
   @include mq(retina) {
+    background-size: cover;
     background-image: url('../images/bg-header/bg-home-tel@2x.jpg');
   }
 
   @include mq(tablet) {
+    height: 219px;
     background-size: cover;
     background-image: url('../images/bg-header/bg-home-tabl.jpg');
 
     @include mq(retina) {
+      background-size: cover;
       background-image: url('../images/bg-header/bg-home-tabl@2x.jpg');
     }
   }
 
-  @include mq(desktop-only) {
+  @include mq(desktop) {
+    height: 216px;
     background-size: cover;
     background-image: url('../images/bg-header/bg-home-dt.jpg');
 
     @include mq(retina) {
+      background-size: cover;
       background-image: url('../images/bg-header/bg-home-dt@2x.jpg');
     }
   }
