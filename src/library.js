@@ -1,4 +1,4 @@
-import './sass/styles.scss';
+import './sass/library.scss';
 import Modal from './js/modal';
 
 //modal works!
