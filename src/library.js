@@ -1,21 +1,5 @@
 import './sass/styles.scss';
 import Modal from './js/modal';
-import * as moviedbAPI from './js/fetch';
-
-//fetch movies on load page
-function onLoadPage() {
-  moviedbAPI
-    .fetchTrendingMovies(1)
-    .then(data => {
-      console.log(data.data.results);
-    })
-    .catch(err => {
-      err;
-    });
-}
-onLoadPage();
-
-// moviedbAPI.fetchMoviesByQuery(1, 'hello');
 
 //modal works!
 new Modal();
