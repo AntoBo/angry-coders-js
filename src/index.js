@@ -2,12 +2,15 @@ import './sass/styles.scss';
 import Modal from './js/modal';
 import fetchAPI from './js/fetch';
 
+import templateCard from './templates/card';
+
 //fetch movies on load page
 function onLoadPage(page) {
   fetchAPI
     .fetchTrendingMovies(page)
     .then(data => {
-      console.log(data.data);
+      // console.log(data.data.results);
+      document.querySelector('.gallery__container').innerHTML = templateCard(data.data.results);
     })
     .catch(err => {
       err;
