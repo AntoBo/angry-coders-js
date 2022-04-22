@@ -18,6 +18,7 @@ function onLoadPage(page) {
   Promise.all([fetchAPI.fetchTrendingMovies(1), fetchAPI.fetchGenres()])
     .then(data => {
       Markup.drawGallery(data);
+      //check valid query here!
       const pagination = new Pagination('pagination', TUI.getOptions(data[0].data.total_results));
       pagination.on('afterMove', event => {
         onPaginationTrending(event);
