@@ -99,10 +99,6 @@
 .header__library__btn {
   display: flex;
   justify-content: center;
-
-  &:last-child {
-    margin-left: 20px;
-  }
 }
 .btn__wached {
   border: 1px solid $white-btn-color;
