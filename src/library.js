@@ -2,7 +2,7 @@ import './sass/library.scss';
 import Modal from './js/modal';
 
 //modal works!
-new Modal();
+// new Modal();
 
 //TUI pagination for markup and styles
 import Pagination from 'tui-pagination';
