@@ -4,6 +4,8 @@ import templateModalMarkup from '../templates/modalMarkup';
 
 export default class Modal {
   constructor(moviesArray) {
+    this.WATCHED = 'watched';
+    this.QUEUE = 'queue';
     this.moviesArray = moviesArray;
     this.modalCloseEl = document.querySelector('.modal__close');
     this.backdrop = document.querySelector('.backdrop');
@@ -23,9 +25,20 @@ export default class Modal {
       const movieObjToDraw = this.moviesArray.find(
         option => option.id === Number(event.target.parentNode.dataset.id)
       );
-      movieObjToDraw.popularity = movieObjToDraw.popularity.toFixed(1);
+      movieObjToDraw.popularity = Number(movieObjToDraw.popularity.toFixed(1));
       movieObjToDraw.title = movieObjToDraw.title.toUpperCase();
       document.querySelector('.js-modal').innerHTML = templateModalMarkup(movieObjToDraw);
+
+      //take controls
+      const toWatchedList = document.querySelector('[data-watched]');
+      const toQueueList = document.querySelector('[data-queue]');
+
+      toWatchedList.addEventListener('click', () => {
+        this.addToList('watched', movieObjToDraw);
+      });
+      toQueueList.addEventListener('click', () => {
+        this.addToList('queue', movieObjToDraw);
+      });
     }
   }
 
@@ -44,6 +57,40 @@ export default class Modal {
   closeModalByEsc(event) {
     if (event.code === 'Escape') {
       this.modalClose();
+    }
+  }
+
+  addToList(listName, movieObj) {
+    const watchedList = JSON.parse(localStorage.getItem('watchedList'));
+    const queueList = JSON.parse(localStorage.getItem('queueList'));
+    if (listName === 'watched') {
+      if (watchedList.find(el => el.id === movieObj.id)) {
+        console.log('this movie already exists');
+        return;
+      }
+      watchedList.push(movieObj);
+      if (queueList.find(el => el.id === movieObj.id)) {
+        queueList.splice(queueList.indexOf(movieObj), 1);
+      }
+      localStorage.setItem('watchedList', JSON.stringify(watchedList));
+      localStorage.setItem('queueList', JSON.stringify(queueList));
+      console.log('toWatchedList');
+      return;
+    }
+
+    if (listName === 'queue') {
+      if (queueList.find(el => el.id === movieObj.id)) {
+        console.log('this movie already exists');
+        return;
+      }
+      queueList.push(movieObj);
+      if (watchedList.find(el => el.id === movieObj.id)) {
+        watchedList.splice(watchedList.indexOf(movieObj), 1);
+      }
+      localStorage.setItem('queueList', JSON.stringify(queueList));
+      localStorage.setItem('watchedList', JSON.stringify(watchedList));
+      console.log('toQueueList');
+      return;
     }
   }
 }
