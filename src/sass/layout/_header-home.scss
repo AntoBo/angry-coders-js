@@ -111,6 +111,8 @@
 
     background-color: inherit;
 
+    color: $white-text-color;
+
     &::placeholder {
       color: $white-text-color;
     }

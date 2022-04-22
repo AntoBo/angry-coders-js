@@ -15,17 +15,9 @@
   pointer-events: none;
 }
 
-.modal {
-  padding: 40px 20px;
-
-  position: absolute;
-  top: 50%;
-  left: 50%;
-
-  transform: translate(-50%, -50%);
+.js-modal {
   width: 280px;
-
-  background-color: #fff;
+  padding: 40px 20px;
 
   @include mq(tablet-only) {
     padding: 40px 36px;
@@ -42,6 +34,17 @@
     width: 100%;
     height: 558px;
   }
+}
+
+.modal {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+
+  transform: translate(-50%, -50%);
+
+  background-color: #fff;
+  border-radius: 4px;
 
   &__close {
     position: absolute;
@@ -58,6 +61,7 @@
 
 .film {
   &__poster {
+    border-radius: 5px;
     margin-bottom: 20px;
 
     @include mq(tablet-only) {
@@ -114,6 +118,10 @@
   &__details-rating2 {
     padding: 1px 4px;
     background-color: $film-rating-bg;
+  }
+
+  &__details-title {
+    width: 50%;
   }
 
   &__review-title {

@@ -1,7 +1,10 @@
 'use strict';
 
+import templateModalMarkup from '../templates/modalMarkup';
+
 export default class Modal {
-  constructor() {
+  constructor(moviesArray) {
+    this.moviesArray = moviesArray;
     this.modalCloseEl = document.querySelector('.modal__close');
     this.backdrop = document.querySelector('.backdrop');
     this.containerOfCards = document.querySelector('.gallery__container');
@@ -16,6 +19,13 @@ export default class Modal {
       this.backdrop.classList.toggle('is-hidden');
       document.body.classList.add('no-scroll');
       window.addEventListener('keydown', this.closeModalByEsc.bind(this));
+      //draw modal card
+      const movieObjToDraw = this.moviesArray.find(
+        option => option.id === Number(event.target.parentNode.dataset.id)
+      );
+      movieObjToDraw.popularity = movieObjToDraw.popularity.toFixed(1);
+      movieObjToDraw.title = movieObjToDraw.title.toUpperCase();
+      document.querySelector('.js-modal').innerHTML = templateModalMarkup(movieObjToDraw);
     }
   }
 
