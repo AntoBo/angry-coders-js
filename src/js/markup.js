@@ -1,4 +1,4 @@
-import Modal from './modal';
+// import Modal from './modal';
 import templateCard from '../templates/cardMarkup';
 
 export default class Markup {
@@ -19,8 +19,6 @@ export default class Markup {
     });
 
     this.galleryEl.innerHTML = templateCard(data[0].data.results);
-    //modal works!
-    new Modal(data[0].data.results);
   }
   static drawLibrary(data) {}
 }

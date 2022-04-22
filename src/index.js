@@ -1,6 +1,8 @@
 import './sass/styles.scss';
 import fetchAPI from './js/fetch';
 import Markup from './js/markup';
+import Modal from './js/modal';
+const modal = new Modal();
 
 //TUI pagination for markup and styles
 import Pagination from 'tui-pagination';
@@ -25,7 +27,10 @@ formSearchEl.addEventListener('submit', onSearchSubmit);
 function onLoadPage(page) {
   Promise.all([fetchAPI.fetchTrendingMovies(1), fetchAPI.fetchGenres()])
     .then(data => {
+      //draw gallery
       Markup.drawGallery(data);
+      //modal create
+      modal.getMovies(data[0].data.results);
       //check valid query here!
       const pagination = new Pagination('pagination', TUI.getOptions(data[0].data.total_results));
       pagination.on('afterMove', event => {
@@ -47,7 +52,11 @@ function onSearchSubmit(event) {
   Promise.all([fetchAPI.fetchMoviesByQuery(1, searchValue), fetchAPI.fetchGenres()])
     .then(data => {
       const paginationEl = document.querySelector('.pagination');
+      //draw gallery
       Markup.drawGallery(data);
+
+      //modal create
+      modal.getMovies(data[0].data.results);
 
       if (data[0].data.results.length === 0) {
         checkNameFilms();
