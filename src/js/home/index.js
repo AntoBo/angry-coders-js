@@ -1,5 +1,5 @@
 // import '../sass/styles.scss';
-import '../../sass/style.scss';
+import '../../sass/styles';
 import fetchAPI from '../fetch';
 import Markup from '../markup';
 import Modal from '../modal';

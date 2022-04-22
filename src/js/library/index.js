@@ -1,5 +1,5 @@
 // import './sass/library.scss';
-import '../../sass/library.scss';
+import '../../sass/library';
 // import Modal from '../modal';
 import Modal from '../modal';
 import Markup from '../markup';
@@ -66,16 +66,19 @@ export default class LocalStorageAPI {
 const watchedBtnEl = document.querySelector('.btn__wached');
 const queueBtnEl = document.querySelector('.btn__queue');
 
-// watchedBtnEl.addEventListener('click', onWatchedClick);
-// queueBtnEl.addEventListener('click', onQueueClick);
+watchedBtnEl.addEventListener('click', onWatchedClick);
+queueBtnEl.addEventListener('click', onQueueClick);
 
 console.log(watchedBtnEl);
 console.log(queueBtnEl);
 
 function onWatchedClick(event) {
-  //   console.log('onWatchedClick');
-  // const data = JSON.parse(localStorage.getItem(LocalStorageAPI.WATCHED));
+  console.log('onWatchedClick');
+  const data = JSON.parse(localStorage.getItem(LocalStorageAPI.WATCHED));
+  console.log(data);
 }
 function onQueueClick(event) {
   console.log('onQueueClick');
+  const data = JSON.parse(localStorage.getItem(LocalStorageAPI.QUEUE));
+  console.log(data);
 }
