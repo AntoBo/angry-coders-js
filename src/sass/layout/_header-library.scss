@@ -1,5 +1,4 @@
 .header {
-  height: 230px;
   background-size: cover;
   background-image: url('../images/bg-header/bg-library-tel.jpg');
 
@@ -9,7 +8,6 @@
   }
 
   @include mq(tablet) {
-    height: 219px;
     background-size: cover;
     background-image: url('../images/bg-header/bg-library-tabl.jpg');
 
@@ -20,7 +18,6 @@
   }
 
   @include mq(desktop) {
-    height: 216px;
     background-size: cover;
     background-image: url('../images/bg-header/bg-library-dt.jpg');
 
@@ -102,10 +99,6 @@
 .header__library__btn {
   display: flex;
   justify-content: center;
-
-  &:last-child {
-    margin-left: 20px;
-  }
 }
 .btn__wached {
   border: 1px solid $white-btn-color;
