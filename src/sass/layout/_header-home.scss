@@ -38,7 +38,6 @@
   }
 
   &__icon {
-
     width: 24px;
     height: 24px;
     margin-right: 10px;
@@ -123,6 +122,40 @@
 
     @include mq(desktop) {
       width: 336px;
+    }
+  }
+  &__message {
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 16px;
+    display: flex;
+    align-items: center;
+    min-width: 280px;
+    margin-top: 16px;
+
+    color: #ff001b;
+
+    @include mq(tablet) {
+      position: absolute;
+      left: 50%;
+      transform: translate(-50%, 0);
+      transition-duration: 1000ms;
+      min-width: 393px;
+      margin-top: 20px;
+    }
+    @include mq(desktop) {
+      position: absolute;
+      left: 50%;
+      transform: translate(-50%, 0);
+      transition-duration: 1000ms;
+      min-width: 393px;
+      margin-top: 20px;
+    }
+    &.is-hidden {
+      opacity: 0;
+      pointer-events: none;
     }
   }
 }

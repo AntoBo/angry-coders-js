@@ -1,8 +1,15 @@
 body {
+  display: flex;
+  flex-direction: column;
   background-color: $main-bg-color;
   font-family: Roboto, sans-serif;
+  min-height: 100vh;
 
   @include font-style(12px, 500, 1.67, null, $main-text-color);
+}
+
+main {
+  flex-grow: 1;
 }
 
 link {
