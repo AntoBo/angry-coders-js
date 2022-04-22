@@ -24,5 +24,8 @@ export default class Markup {
 
     this.galleryEl.innerHTML = templateCard(data[0].data.results);
   }
-  static drawLibrary(data) {}
+  static drawLibrary(data) {
+    console.log('drawLibrary');
+    this.galleryEl.innerHTML = templateCard(data);
+  }
 }
