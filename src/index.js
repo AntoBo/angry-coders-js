@@ -46,8 +46,18 @@ function onSearchSubmit(event) {
 
   Promise.all([fetchAPI.fetchMoviesByQuery(1, searchValue), fetchAPI.fetchGenres()])
     .then(data => {
+      const paginationEl = document.querySelector('.pagination');
       Markup.drawGallery(data);
+
+      if (data[0].data.results.length === 0) {
+        checkNameFilms();
+        paginationEl.style.display = 'none';
+
+        return;
+      }
       const pagination = new Pagination('pagination', TUI.getOptions(data[0].data.total_results));
+      paginationEl.style.display = 'block';
+
       pagination.on('afterMove', event => {
         onPaginationSearch(event, searchValue);
       });
@@ -79,4 +89,15 @@ function onPaginationSearch(event, searchValue) {
     .catch(err => {
       err;
     });
+}
+
+// checks for movies on the site
+function checkNameFilms() {
+  const errorMessage = document.querySelector('.header__message');
+
+  errorMessage.classList.remove('is-hidden');
+
+  setTimeout(() => {
+    errorMessage.classList.add('is-hidden');
+  }, 4000);
 }
