@@ -9,6 +9,14 @@ import * as TUI from './js/pagination';
 
 //TUI pagination ==============================
 
+//LIBRARY init in local storage
+if (!localStorage.getItem('watchedList')) {
+  localStorage.setItem('watchedList', JSON.stringify(new Array()));
+}
+if (!localStorage.getItem('queueList')) {
+  localStorage.setItem('queueList', JSON.stringify(new Array()));
+}
+
 //search elements
 const formSearchEl = document.querySelector('.header__form');
 formSearchEl.addEventListener('submit', onSearchSubmit);

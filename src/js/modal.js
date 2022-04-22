@@ -3,6 +3,8 @@
 import templateModalMarkup from '../templates/modalMarkup';
 
 export default class Modal {
+  static WATCHED = 'watched';
+  static QUEUE = 'queue';
   constructor(moviesArray) {
     this.moviesArray = moviesArray;
     this.modalCloseEl = document.querySelector('.modal__close');
@@ -34,14 +36,14 @@ export default class Modal {
       toWatchedList.addEventListener(
         'click',
         () => {
-          console.log('toWatchedList');
+          this.addToList(this.WATCHED, movieObjToDraw);
         }
         // localStorage.setItem('Watched', JSON.stringify(movieObjToDraw))
       );
       toQueueList.addEventListener(
         'click',
         () => {
-          console.log('toQueueList');
+          this.addToList(this.QUEUE, movieObjToDraw);
         }
         // localStorage.setItem('Queue', JSON.stringify(movieObjToDraw))
       );
@@ -66,5 +68,23 @@ export default class Modal {
     }
   }
 
-  addToList(listName) {}
+  addToList(listName, movieObj) {
+    let list;
+    if (listName === this.WATCHED) {
+      list = 'watchedList';
+    } else {
+      list = 'queueList';
+    }
+    //read loc stor
+    const myLibrary = JSON.parse(localStorage.getItem(list));
+    //check if movie is in library
+    if (myLibrary.find(el => el.id === movieObj.id)) {
+      console.log('this movie already exists');
+      return;
+    }
+    //push movie to loc stor
+    myLibrary.push(movieObj);
+    //put back to loc stor
+    localStorage.setItem(list, JSON.stringify(myLibrary));
+  }
 }
