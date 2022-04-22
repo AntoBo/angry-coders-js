@@ -3,9 +3,9 @@
 import templateModalMarkup from '../templates/modalMarkup';
 
 export default class Modal {
-  static WATCHED = 'watched';
-  static QUEUE = 'queue';
   constructor(moviesArray) {
+    this.WATCHED = 'watched';
+    this.QUEUE = 'queue';
     this.moviesArray = moviesArray;
     this.modalCloseEl = document.querySelector('.modal__close');
     this.backdrop = document.querySelector('.backdrop');
@@ -33,20 +33,12 @@ export default class Modal {
       const toWatchedList = document.querySelector('[data-watched]');
       const toQueueList = document.querySelector('[data-queue]');
 
-      toWatchedList.addEventListener(
-        'click',
-        () => {
-          this.addToList(this.WATCHED, movieObjToDraw);
-        }
-        // localStorage.setItem('Watched', JSON.stringify(movieObjToDraw))
-      );
-      toQueueList.addEventListener(
-        'click',
-        () => {
-          this.addToList(this.QUEUE, movieObjToDraw);
-        }
-        // localStorage.setItem('Queue', JSON.stringify(movieObjToDraw))
-      );
+      toWatchedList.addEventListener('click', () => {
+        this.addToList('watched', movieObjToDraw);
+      });
+      toQueueList.addEventListener('click', () => {
+        this.addToList('queue', movieObjToDraw);
+      });
     }
   }
 
@@ -69,22 +61,36 @@ export default class Modal {
   }
 
   addToList(listName, movieObj) {
-    let list;
-    if (listName === this.WATCHED) {
-      list = 'watchedList';
-    } else {
-      list = 'queueList';
-    }
-    //read loc stor
-    const myLibrary = JSON.parse(localStorage.getItem(list));
-    //check if movie is in library
-    if (myLibrary.find(el => el.id === movieObj.id)) {
-      console.log('this movie already exists');
+    const watchedList = JSON.parse(localStorage.getItem('watchedList'));
+    const queueList = JSON.parse(localStorage.getItem('queueList'));
+    if (listName === 'watched') {
+      if (watchedList.find(el => el.id === movieObj.id)) {
+        console.log('this movie already exists');
+        return;
+      }
+      watchedList.push(movieObj);
+      if (queueList.find(el => el.id === movieObj.id)) {
+        queueList.splice(queueList.indexOf(movieObj), 1);
+      }
+      localStorage.setItem('watchedList', JSON.stringify(watchedList));
+      localStorage.setItem('queueList', JSON.stringify(queueList));
+      console.log('toWatchedList');
       return;
     }
-    //push movie to loc stor
-    myLibrary.push(movieObj);
-    //put back to loc stor
-    localStorage.setItem(list, JSON.stringify(myLibrary));
+
+    if (listName === 'queue') {
+      if (queueList.find(el => el.id === movieObj.id)) {
+        console.log('this movie already exists');
+        return;
+      }
+      queueList.push(movieObj);
+      if (watchedList.find(el => el.id === movieObj.id)) {
+        watchedList.splice(watchedList.indexOf(movieObj), 1);
+      }
+      localStorage.setItem('queueList', JSON.stringify(queueList));
+      localStorage.setItem('watchedList', JSON.stringify(watchedList));
+      console.log('toQueueList');
+      return;
+    }
   }
 }
