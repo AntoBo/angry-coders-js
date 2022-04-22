@@ -23,9 +23,28 @@ export default class Modal {
       const movieObjToDraw = this.moviesArray.find(
         option => option.id === Number(event.target.parentNode.dataset.id)
       );
-      movieObjToDraw.popularity = movieObjToDraw.popularity.toFixed(1);
+      movieObjToDraw.popularity = Number(movieObjToDraw.popularity.toFixed(1));
       movieObjToDraw.title = movieObjToDraw.title.toUpperCase();
       document.querySelector('.js-modal').innerHTML = templateModalMarkup(movieObjToDraw);
+
+      //take controls
+      const toWatchedList = document.querySelector('[data-watched]');
+      const toQueueList = document.querySelector('[data-queue]');
+
+      toWatchedList.addEventListener(
+        'click',
+        () => {
+          console.log('toWatchedList');
+        }
+        // localStorage.setItem('Watched', JSON.stringify(movieObjToDraw))
+      );
+      toQueueList.addEventListener(
+        'click',
+        () => {
+          console.log('toQueueList');
+        }
+        // localStorage.setItem('Queue', JSON.stringify(movieObjToDraw))
+      );
     }
   }
 
@@ -46,4 +65,6 @@ export default class Modal {
       this.modalClose();
     }
   }
+
+  addToList(listName) {}
 }

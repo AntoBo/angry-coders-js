@@ -139,41 +139,8 @@
   &__btn-wrapper {
     display: flex;
   }
+}
 
-  &__btn-watched,
-  &__btn-queue {
-    padding: 13px 0;
-    font-weight: 500;
-    font-size: 12px;
-    line-height: 1.33;
-    border: transparent;
-    min-width: 110px;
-    text-align: center;
-
-    @include mq(tablet-only) {
-      min-width: 125px;
-    }
-
-    @include mq(desktop) {
-      min-width: 136px;
-    }
-  }
-
-  &__btn-watched {
-    margin-right: 20px;
-    color: $white-text-color;
-
-    @include mq(tablet) {
-      margin-right: 15px;
-    }
-
-    @include mq(desktop) {
-      margin-left: 8px;
-    }
-  }
-
-  &__btn-queue {
-    background-color: $white-btn-color;
-    border: 1px solid black;
-  }
+.js-modal {
+  overflow: auto;
 }

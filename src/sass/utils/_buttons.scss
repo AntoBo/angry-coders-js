@@ -1,12 +1,48 @@
 .button {
   display: block;
-  border: 1px solid $white-btn-color;
+  border: 1px solid $main-text-color;
   border-radius: 4px;
   min-width: 130px;
   padding: 14px;
-  background-color: $accent-btn-color;
+  background-color: $transparent-color;
+  color: $main-text-color;
 
   text-transform: uppercase;
 
   cursor: pointer;
+
+  padding: 13px 0;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 1.33;
+  border: transparent;
+  min-width: 110px;
+  text-align: center;
+
+  background-color: $white-btn-color;
+  border: 1px solid black;
+
+  @include mq(tablet-only) {
+    min-width: 125px;
+  }
+
+  @include mq(desktop) {
+    min-width: 136px;
+  }
+
+  margin-right: 10px;
+
+  @include mq(tablet) {
+    margin-right: 7px;
+  }
+
+  @include mq(desktop) {
+    margin-left: 4px;
+  }
+
+  &__checked {
+    color: $white-text-color;
+    background-color: $accent-btn-color;
+    border: 1px solid $transparent-color;
+  }
 }
