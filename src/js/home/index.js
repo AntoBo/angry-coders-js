@@ -1,5 +1,3 @@
-// import '../sass/styles.scss';
-import '../../sass/styles';
 import fetchAPI from '../fetch';
 import Markup from '../markup';
 import Modal from '../modal';
@@ -12,7 +10,6 @@ import * as TUI from '../pagination';
 
 //TUI pagination ==============================
 
-//LIBRARY init in local storage
 if (!localStorage.getItem('watchedList')) {
   localStorage.setItem('watchedList', JSON.stringify(new Array()));
 }
