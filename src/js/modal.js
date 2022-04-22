@@ -17,29 +17,32 @@ export default class Modal {
   }
 
   modalOpen(event) {
-    if (event.target.nodeName !== 'UL') {
-      this.backdrop.classList.toggle('is-hidden');
-      document.body.classList.add('no-scroll');
-      window.addEventListener('keydown', this.closeModalByEsc.bind(this));
-      //draw modal card
-      const movieObjToDraw = this.moviesArray.find(
-        option => option.id === Number(event.target.parentNode.dataset.id)
-      );
-      movieObjToDraw.popularity = Number(movieObjToDraw.popularity.toFixed(1));
-      movieObjToDraw.title = movieObjToDraw.title.toUpperCase();
-      document.querySelector('.js-modal').innerHTML = templateModalMarkup(movieObjToDraw);
-
-      //take controls
-      const toWatchedList = document.querySelector('[data-watched]');
-      const toQueueList = document.querySelector('[data-queue]');
-
-      toWatchedList.addEventListener('click', () => {
-        this.addToList('watched', movieObjToDraw);
-      });
-      toQueueList.addEventListener('click', () => {
-        this.addToList('queue', movieObjToDraw);
-      });
+    if (event.target.nodeName === 'UL') {
+      return;
     }
+
+    this.backdrop.classList.toggle('is-hidden');
+    document.body.classList.add('no-scroll');
+    window.addEventListener('keydown', this.closeModalByEsc.bind(this));
+    //draw modal card
+    const movieObjToDraw = this.moviesArray.find(
+      option => option.id === Number(event.target.parentNode.dataset.id)
+    );
+    // console.log(movieObjToDraw.popularity.toFixed(1));
+    movieObjToDraw.popularity = parseFloat(movieObjToDraw.popularity).toFixed(1);
+    movieObjToDraw.title = movieObjToDraw.title.toUpperCase();
+    document.querySelector('.js-modal').innerHTML = templateModalMarkup(movieObjToDraw);
+
+    //take controls of buttons
+    const toWatchedList = document.querySelector('[data-watched]');
+    const toQueueList = document.querySelector('[data-queue]');
+
+    toWatchedList.addEventListener('click', () => {
+      this.addToList('watched', movieObjToDraw);
+    });
+    toQueueList.addEventListener('click', () => {
+      this.addToList('queue', movieObjToDraw);
+    });
   }
 
   modalClose() {
@@ -72,8 +75,7 @@ export default class Modal {
       if (queueList.find(el => el.id === movieObj.id)) {
         queueList.splice(queueList.indexOf(movieObj), 1);
       }
-      localStorage.setItem('watchedList', JSON.stringify(watchedList));
-      localStorage.setItem('queueList', JSON.stringify(queueList));
+
       console.log('toWatchedList');
       return;
     }
@@ -87,10 +89,10 @@ export default class Modal {
       if (watchedList.find(el => el.id === movieObj.id)) {
         watchedList.splice(watchedList.indexOf(movieObj), 1);
       }
-      localStorage.setItem('queueList', JSON.stringify(queueList));
-      localStorage.setItem('watchedList', JSON.stringify(watchedList));
       console.log('toQueueList');
       return;
     }
+    localStorage.setItem('watchedList', JSON.stringify(watchedList));
+    localStorage.setItem('queueList', JSON.stringify(queueList));
   }
 }
