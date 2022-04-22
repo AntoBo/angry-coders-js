@@ -6,8 +6,12 @@ export default class Markup {
 
   static drawGallery(data) {
     data[0].data.results.forEach(el => {
+      //put data to format
+      el.popularity = parseFloat(el.popularity).toFixed(1);
+      el.title = el.title.toUpperCase();
       el.release_date = el.release_date.slice(0, 4);
 
+      //put genres digits to names
       el.genre_ids = el.genre_ids.map(elem => {
         data[1].data.genres.filter(el => {
           if (el.id === elem) {

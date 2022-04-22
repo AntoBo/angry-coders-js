@@ -1,11 +1,12 @@
 'use strict';
 
 import templateModalMarkup from '../templates/modalMarkup';
+import LocalStorageAPI from './library';
 
 export default class Modal {
   constructor() {
-    this.WATCHED = 'watched';
-    this.QUEUE = 'queue';
+    this.WATCHED = 'watchedList';
+    this.QUEUE = 'queueList';
     this.moviesArray;
     this.modalCloseEl = document.querySelector('.modal__close');
     this.backdrop = document.querySelector('.backdrop');
@@ -28,22 +29,20 @@ export default class Modal {
     document.body.classList.add('no-scroll');
     window.addEventListener('keydown', this.closeModalByEsc.bind(this));
     //draw modal card
-    const movieObjToDraw = this.moviesArray.find(
+    const movieObj = this.moviesArray.find(
       option => option.id === Number(event.target.parentNode.dataset.id)
     );
-    movieObjToDraw.popularity = parseFloat(movieObjToDraw.popularity).toFixed(1);
-    movieObjToDraw.title = movieObjToDraw.title.toUpperCase();
-    document.querySelector('.js-modal').innerHTML = templateModalMarkup(movieObjToDraw);
+    document.querySelector('.js-modal').innerHTML = templateModalMarkup(movieObj);
 
     //take controls of buttons
     const toWatchedList = document.querySelector('[data-watched]');
     const toQueueList = document.querySelector('[data-queue]');
 
     toWatchedList.addEventListener('click', () => {
-      this.addToList('watched', movieObjToDraw);
+      LocalStorageAPI.addToList(this.WATCHED, movieObj);
     });
     toQueueList.addEventListener('click', () => {
-      this.addToList('queue', movieObjToDraw);
+      LocalStorageAPI.addToList(this.QUEUE, movieObj);
     });
   }
 
@@ -65,36 +64,46 @@ export default class Modal {
     }
   }
 
-  addToList(listName, movieObj) {
-    const watchedList = JSON.parse(localStorage.getItem('watchedList'));
-    const queueList = JSON.parse(localStorage.getItem('queueList'));
-    if (listName === 'watched') {
-      if (watchedList.find(el => el.id === movieObj.id)) {
-        console.log('this movie already exists');
-        return;
-      }
-      watchedList.push(movieObj);
-      if (queueList.find(el => el.id === movieObj.id)) {
-        queueList.splice(queueList.indexOf(movieObj), 1);
-      }
+  // addToList(listName, movieObj) {
+  //   const watchedList = JSON.parse(localStorage.getItem(this.WATCHED));
+  //   const queueList = JSON.parse(localStorage.getItem(this.QUEUE));
+  //   if (listName === this.WATCHED) {
+  //     if (watchedList.find(el => el.id === movieObj.id)) {
+  //       console.log('this movie already exists');
+  //       return;
+  //     }
 
-      console.log('toWatchedList');
-      return;
-    }
+  //     //add item
+  //     watchedList.push(movieObj);
 
-    if (listName === 'queue') {
-      if (queueList.find(el => el.id === movieObj.id)) {
-        console.log('this movie already exists');
-        return;
-      }
-      queueList.push(movieObj);
-      if (watchedList.find(el => el.id === movieObj.id)) {
-        watchedList.splice(watchedList.indexOf(movieObj), 1);
-      }
-      console.log('toQueueList');
-      return;
-    }
-    localStorage.setItem('watchedList', JSON.stringify(watchedList));
-    localStorage.setItem('queueList', JSON.stringify(queueList));
-  }
+  //     //remove item
+  //     if (queueList.find(el => el.id === movieObj.id)) {
+  //       queueList.splice(queueList.indexOf(movieObj), 1);
+  //     }
+
+  //     console.log('toWatchedList');
+  //     localStorage.setItem(this.WATCHED, JSON.stringify(watchedList));
+  //     localStorage.setItem(this.QUEUE, JSON.stringify(queueList));
+  //     return;
+  //   }
+
+  //   if (listName === this.QUEUE) {
+  //     if (queueList.find(el => el.id === movieObj.id)) {
+  //       console.log('this movie already exists');
+  //       return;
+  //     }
+
+  //     //add item
+  //     queueList.push(movieObj);
+
+  //     //remove item
+  //     if (watchedList.find(el => el.id === movieObj.id)) {
+  //       watchedList.splice(watchedList.indexOf(movieObj), 1);
+  //     }
+  //     console.log('toQueueList');
+  //     localStorage.setItem(this.WATCHED, JSON.stringify(watchedList));
+  //     localStorage.setItem(this.QUEUE, JSON.stringify(queueList));
+  //     return;
+  //   }
+  // }
 }
