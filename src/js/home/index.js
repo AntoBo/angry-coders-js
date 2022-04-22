@@ -1,13 +1,14 @@
-import './sass/styles.scss';
-import fetchAPI from './js/fetch';
-import Markup from './js/markup';
-import Modal from './js/modal';
+// import '../sass/styles.scss';
+import '../../sass/style.scss';
+import fetchAPI from '../fetch';
+import Markup from '../markup';
+import Modal from '../modal';
 const modal = new Modal();
 
 //TUI pagination for markup and styles
 import Pagination from 'tui-pagination';
 import 'tui-pagination/dist/tui-pagination.css';
-import * as TUI from './js/pagination';
+import * as TUI from '../pagination';
 
 //TUI pagination ==============================
 
