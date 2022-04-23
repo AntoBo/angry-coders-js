@@ -11,10 +11,12 @@ export default class Modal {
     this.modalCloseEl = document.querySelector('.modal__close');
     this.backdrop = document.querySelector('.backdrop');
     this.containerOfCards = document.querySelector('.gallery__container');
+    this.devsLink = document.querySelector('.footer__link');
 
     this.containerOfCards.addEventListener('click', this.modalOpen.bind(this));
     this.modalCloseEl.addEventListener('click', this.modalClose.bind(this));
     this.backdrop.addEventListener('click', this.onBackdropClick.bind(this));
+    this.devsLink.addEventListener('click', this.onDevsLink.bind(this));
   }
 
   getMovies(moviesArray) {
@@ -48,11 +50,13 @@ export default class Modal {
     if (this.WATCHED) {
       if (watchedList.find(el => el.id === movieObj.id)) {
         toWatchedList.textContent = 'remove watched';
+        toWatchedList.classList.add('button__checked');
       }
     }
     if (this.QUEUE) {
       if (queueList.find(el => el.id === movieObj.id)) {
         toQueueList.textContent = 'remove queue';
+        toQueueList.classList.add('button__checked');
       }
     }
 
@@ -82,5 +86,14 @@ export default class Modal {
     if (event.code === 'Escape') {
       this.modalClose();
     }
+  }
+
+  onDevsLink(event) {
+    console.log('onDevsLink');
+    event.preventDefault();
+    this.backdrop.classList.toggle('is-hidden');
+    document.body.classList.add('no-scroll');
+    window.addEventListener('keydown', this.closeModalByEsc.bind(this));
+    Markup.drawDevsModal();
   }
 }

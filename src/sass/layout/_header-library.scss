@@ -101,27 +101,6 @@
   justify-content: center;
 }
 
-.btn__library,
-.btn__library {
-  color: $main-bg-color;
-  border: 1px solid $main-bg-color;
-
-  min-width: 129px;
-
-  @include mq(tablet) {
-    min-width: 152px;
-  }
-
-  @include mq(desktop) {
-    min-width: 148px;
-  }
-}
-
-.btn__library:hover,
-.btn__library:focus {
-  background-color: $accent-btn-color;
-  border: 1px solid transparent;
-}
 // .btn__wached {
 //   border: 1px solid $white-btn-color;
 //   box-sizing: border-box;
