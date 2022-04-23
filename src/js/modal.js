@@ -22,7 +22,7 @@ export default class Modal {
   }
 
   modalOpen(event) {
-    if (event.target.nodeName === 'UL') {
+    if (event.target.nodeName === 'UL' || event.target.nodeName === 'P') {
       return;
     }
     //take controls
@@ -39,12 +39,30 @@ export default class Modal {
     //take controls of buttons
     const toWatchedList = document.querySelector('[data-watched]');
     const toQueueList = document.querySelector('[data-queue]');
+    const watchedList = JSON.parse(localStorage.getItem(this.WATCHED));
+    const queueList = JSON.parse(localStorage.getItem(this.QUEUE));
+
+    console.log;
+
+    //check film in localstor
+    if (this.WATCHED) {
+      if (watchedList.find(el => el.id === movieObj.id)) {
+        toWatchedList.textContent = 'remove watched';
+      }
+    }
+    if (this.QUEUE) {
+      if (queueList.find(el => el.id === movieObj.id)) {
+        toQueueList.textContent = 'remove queue';
+      }
+    }
 
     toWatchedList.addEventListener('click', () => {
       LocalStorageAPI.addToList(this.WATCHED, movieObj);
+      toWatchedList.classList.toggle('button__checked');
     });
     toQueueList.addEventListener('click', () => {
       LocalStorageAPI.addToList(this.QUEUE, movieObj);
+      toQueueList.classList.toggle('button__checked');
     });
   }
 
