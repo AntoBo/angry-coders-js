@@ -11,6 +11,7 @@ export default class Markup {
   static drawGallery(data) {
     data[0].data.results.forEach(el => {
       //put data to format
+      //poster
       if (el.poster_path) {
         el.poster_path = this.BASE_IMG_URL + el.poster_path;
       } else {
