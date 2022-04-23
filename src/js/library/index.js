@@ -31,32 +31,43 @@ queueBtnEl.addEventListener('click', onQueueClick);
 onWatchedClick();
 
 function onWatchedClick() {
-  try {
-    //take data
-    const data = JSON.parse(localStorage.getItem(LocalStorageAPI.WATCHED));
-    //draw galley
-    Markup.drawLibrary(getDataToDrawPage(data, 1));
-    modal.getMovies(getDataToDrawPage(data, 1));
-    //TUI pagination
-    const pagination = new Pagination('pagination', TUI.getOptions(data.length));
-    pagination.on('afterMove', event => {
-      //draw galley
-      Markup.drawLibrary(getDataToDrawPage(data, event.page));
-      modal.getMovies(getDataToDrawPage(data, event.page));
-    });
-  } catch (error) {
-    console.log('localStorage not parsed. probably its empty. error is', error);
-  }
+  buildList(LocalStorageAPI.WATCHED);
 }
 function onQueueClick() {
-  const data = JSON.parse(localStorage.getItem(LocalStorageAPI.QUEUE));
-  Markup.drawLibrary(data);
-  const modal = new Modal();
-  modal.getMovies(data);
+  buildList(LocalStorageAPI.QUEUE);
 }
 function getDataToDrawPage(data, page) {
   const from = (page - 1) * 20;
   const to = from + 19;
   const dataPage = data.slice(from, to);
   return dataPage;
+}
+function buildList(listNameInLocalStorage) {
+  Markup.galleryEl.innerHTML = Markup.LIB_EMPTY_MESSAGE;
+  try {
+    //take data
+    const data = JSON.parse(localStorage.getItem(listNameInLocalStorage));
+    if (!data.length) {
+      console.log('data is empty');
+
+      return;
+    }
+    //draw galley 1st page
+    modal.getMovies(getDataToDrawPage(data, 1));
+    Markup.drawLibrary(getDataToDrawPage(data, 1));
+    //TUI pagination
+    const pagination = new Pagination('pagination', TUI.getOptions(data.length));
+    pagination.on('afterMove', event => {
+      //draw galley
+      modal.getMovies(getDataToDrawPage(data, event.page));
+      Markup.drawLibrary(getDataToDrawPage(data, event.page));
+    });
+  } catch (error) {
+    console.log('localStorage not parsed. probably its empty. error is', error);
+  }
+}
+
+function onclick(event) {
+  console.log(event.target);
+  console.log(event.currentTarget);
 }

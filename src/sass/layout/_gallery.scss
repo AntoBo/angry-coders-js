@@ -47,3 +47,8 @@
     color: $accent-bg-color;
   }
 }
+
+.js-library-message {
+  margin: 0 auto;
+  @include font-style(14px, 500, null, null, $footer-text-color);
+}
