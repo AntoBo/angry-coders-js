@@ -39,7 +39,7 @@ function onClick(event) {
     const data = JSON.parse(localStorage.getItem(event.target.name));
     if (!data.length) {
       console.log('data is empty');
-
+      document.querySelector('.pagination').style.display = 'none';
       return;
     }
 
@@ -47,6 +47,8 @@ function onClick(event) {
     Markup.drawLibrary(getDataToDrawPage(data, 1));
     //TUI pagination
     const pagination = new Pagination('pagination', TUI.getOptions(data.length));
+    document.querySelector('.pagination').style.display = 'block';
+
     pagination.on('afterMove', event => {
       //draw galley
       modal.getMovies(getDataToDrawPage(data, event.page));
