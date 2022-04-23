@@ -1,6 +1,8 @@
 import fetchAPI from '../fetch';
 import Markup from '../markup';
 import Modal from '../modal';
+import { Block } from 'notiflix/build/notiflix-block-aio';
+
 const modal = new Modal();
 
 //TUI pagination for markup and styles
@@ -23,6 +25,7 @@ formSearchEl.addEventListener('submit', onSearchSubmit);
 
 //fetch movies once on load page
 function onLoadPage(page) {
+  Block.dots('.loading-block');
   Promise.all([fetchAPI.fetchTrendingMovies(1), fetchAPI.fetchGenres()])
     .then(data => {
       //draw gallery
@@ -38,21 +41,25 @@ function onLoadPage(page) {
     .catch(err => {
       err;
     });
+  Block.remove('.loading-block');
 }
 onLoadPage(1);
 
 //fetch movies on search submit
 function onSearchSubmit(event) {
+  Markup.galleryEl.innerHTML = '';
+  Block.dots('.loading-block');
+
   event.preventDefault();
   const searchValue = event.target.elements.search.value;
   console.dir(searchValue);
 
   Promise.all([fetchAPI.fetchMoviesByQuery(1, searchValue), fetchAPI.fetchGenres()])
     .then(data => {
-      const paginationEl = document.querySelector('.pagination');
       //draw gallery
       Markup.drawGallery(data);
 
+      const paginationEl = document.querySelector('.pagination');
       //modal create
       modal.getMovies(data[0].data.results);
 
@@ -72,6 +79,7 @@ function onSearchSubmit(event) {
     .catch(err => {
       err;
     });
+  Block.remove('.loading-block');
 }
 
 //fetch movies on pagination in trending list
