@@ -21,32 +21,28 @@ import * as TUI from '../pagination';
 // fakeList(21);
 
 //get controls
-const watchedBtnEl = document.querySelector('.btn__wached');
-const queueBtnEl = document.querySelector('.btn__queue');
+const watchedBtnEl = document.querySelector('[name="watchedList"]');
+const queueBtnEl = document.querySelector('[name="queueList"]');
 Markup.galleryEl.innerHTML = Markup.LIB_EMPTY_MESSAGE;
 
-watchedBtnEl.addEventListener('click', onWatchedClick);
-queueBtnEl.addEventListener('click', onQueueClick);
+watchedBtnEl.addEventListener('click', onClick);
+queueBtnEl.addEventListener('click', onClick);
 
-onWatchedClick();
+//call watch list on page load
+onClick({ target: watchedBtnEl });
 
-function onWatchedClick() {
-  buildList(LocalStorageAPI.WATCHED);
-}
-function onQueueClick() {
-  buildList(LocalStorageAPI.QUEUE);
-}
 function getDataToDrawPage(data, page) {
   const from = (page - 1) * 20;
   const to = from + 19;
   const dataPage = data.slice(from, to);
   return dataPage;
 }
-function buildList(listNameInLocalStorage) {
+
+function onClick(event) {
   Markup.galleryEl.innerHTML = Markup.LIB_EMPTY_MESSAGE;
   try {
     //take data
-    const data = JSON.parse(localStorage.getItem(listNameInLocalStorage));
+    const data = JSON.parse(localStorage.getItem(event.target.name));
     if (!data.length) {
       console.log('data is empty');
 
@@ -65,9 +61,4 @@ function buildList(listNameInLocalStorage) {
   } catch (error) {
     console.log('localStorage not parsed. probably its empty. error is', error);
   }
-}
-
-function onclick(event) {
-  console.log(event.target);
-  console.log(event.currentTarget);
 }
