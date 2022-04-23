@@ -1,4 +1,5 @@
 import Modal from '../modal';
+const modal = new Modal();
 import Markup from '../markup';
 import LocalStorageAPI from '../library';
 
@@ -6,34 +7,56 @@ import LocalStorageAPI from '../library';
 import Pagination from 'tui-pagination';
 import 'tui-pagination/dist/tui-pagination.css';
 import * as TUI from '../pagination';
-// const pagination = new Pagination('pagination', TUI.getOptions(500));
 //TUI pagination ==============================
+
+//fill watchlist fake obj to test pagin
+// function fakeList(quantity) {
+//   //create fake
+//   const fakeList = JSON.parse(localStorage.getItem(LocalStorageAPI.WATCHED));
+//   for (let i = 0; i <= quantity; i++) {
+//     fakeList.push(fakeList[0]);
+//   }
+//   localStorage.setItem(LocalStorageAPI.WATCHED, JSON.stringify(fakeList));
+// }
+// fakeList(21);
 
 //get controls
 const watchedBtnEl = document.querySelector('.btn__wached');
 const queueBtnEl = document.querySelector('.btn__queue');
-const galleryEl = document.querySelector('.gallery__container');
+Markup.galleryEl.innerHTML = Markup.LIB_EMPTY_MESSAGE;
 
 watchedBtnEl.addEventListener('click', onWatchedClick);
 queueBtnEl.addEventListener('click', onQueueClick);
 
+onWatchedClick();
+
 function onWatchedClick() {
-  //take data
-  const data = JSON.parse(localStorage.getItem(LocalStorageAPI.WATCHED));
-  //draw galley
-  Markup.drawLibrary(data);
-  //create modal
-  const modal = new Modal();
-  modal.getMovies(data);
-  //TUI pagination
-  const pagination = new Pagination('pagination', TUI.getOptions(data.length));
-  pagination.on('afterMove', event => {
-    // onPaginationSearch(event, searchValue);
-  });
+  try {
+    //take data
+    const data = JSON.parse(localStorage.getItem(LocalStorageAPI.WATCHED));
+    //draw galley
+    Markup.drawLibrary(getDataToDrawPage(data, 1));
+    modal.getMovies(getDataToDrawPage(data, 1));
+    //TUI pagination
+    const pagination = new Pagination('pagination', TUI.getOptions(data.length));
+    pagination.on('afterMove', event => {
+      //draw galley
+      Markup.drawLibrary(getDataToDrawPage(data, event.page));
+      modal.getMovies(getDataToDrawPage(data, event.page));
+    });
+  } catch (error) {
+    console.log('localStorage not parsed. probably its empty. error is', error);
+  }
 }
 function onQueueClick() {
   const data = JSON.parse(localStorage.getItem(LocalStorageAPI.QUEUE));
   Markup.drawLibrary(data);
   const modal = new Modal();
   modal.getMovies(data);
+}
+function getDataToDrawPage(data, page) {
+  const from = (page - 1) * 20;
+  const to = from + 19;
+  const dataPage = data.slice(from, to);
+  return dataPage;
 }

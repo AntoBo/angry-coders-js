@@ -79,6 +79,8 @@ function onPaginationTrending(event) {
   Promise.all([fetchAPI.fetchTrendingMovies(event.page), fetchAPI.fetchGenres()])
     .then(data => {
       Markup.drawGallery(data);
+      modal.getMovies(data[0].data.results);
+
       console.log(data[0].data.results);
     })
     .catch(err => {
@@ -91,6 +93,8 @@ function onPaginationSearch(event, searchValue) {
   Promise.all([fetchAPI.fetchMoviesByQuery(event.page, searchValue), fetchAPI.fetchGenres()])
     .then(data => {
       Markup.drawGallery(data);
+      modal.getMovies(data[0].data.results);
+
       console.log(data[0].data.results);
     })
     .catch(err => {

@@ -7,6 +7,8 @@ export default class Markup {
   static galleryEl = document.querySelector('.gallery__container');
   static modalEl = document.querySelector('.js-modal');
   static BASE_IMG_URL = 'https://image.tmdb.org/t/p/w500';
+  static LIB_EMPTY_MESSAGE =
+    '<p class="js-library-message">Choose the movies on homepage please</>';
 
   static drawGallery(data) {
     data[0].data.results.forEach(el => {
