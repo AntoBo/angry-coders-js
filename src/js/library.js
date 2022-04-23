@@ -30,14 +30,14 @@ export default class LocalStorageAPI {
       if (queueList.find(el => el.id === movieObj.id)) {
         queueList.splice(queueList.indexOf(movieObj), 1);
         localStorage.setItem(this.QUEUE, JSON.stringify(queueList));
-        toQueueList.textContent = 'add to form queue';
+        toQueueList.textContent = 'add to queue';
         return;
       }
 
       //add item
       queueList.push(movieObj);
       localStorage.setItem(this.QUEUE, JSON.stringify(queueList));
-      toQueueList.textContent = 'remove form queue';
+      toQueueList.textContent = 'remove from queue';
 
       return;
     }

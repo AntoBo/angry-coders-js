@@ -9,17 +9,6 @@ import 'tui-pagination/dist/tui-pagination.css';
 import * as TUI from '../pagination';
 //TUI pagination ==============================
 
-//fill watchlist fake obj to test pagin
-// function fakeList(quantity) {
-//   //create fake
-//   const fakeList = JSON.parse(localStorage.getItem(LocalStorageAPI.WATCHED));
-//   for (let i = 0; i <= quantity; i++) {
-//     fakeList.push(fakeList[0]);
-//   }
-//   localStorage.setItem(LocalStorageAPI.WATCHED, JSON.stringify(fakeList));
-// }
-// fakeList(21);
-
 //get controls
 const watchedBtnEl = document.querySelector('[name="watchedList"]');
 const queueBtnEl = document.querySelector('[name="queueList"]');
@@ -39,7 +28,12 @@ function getDataToDrawPage(data, page) {
 }
 
 function onClick(event) {
+  //clear gallery
   Markup.galleryEl.innerHTML = Markup.LIB_EMPTY_MESSAGE;
+  //switch buttons styles
+  document.querySelectorAll('.btn__library').forEach(el => el.classList.remove('button__checked'));
+  event.target.classList.add('button__checked');
+
   try {
     //take data
     const data = JSON.parse(localStorage.getItem(event.target.name));
@@ -48,7 +42,7 @@ function onClick(event) {
 
       return;
     }
-    //draw galley 1st page
+
     modal.getMovies(getDataToDrawPage(data, 1));
     Markup.drawLibrary(getDataToDrawPage(data, 1));
     //TUI pagination

@@ -12,6 +12,7 @@ import * as TUI from '../pagination';
 
 //TUI pagination ==============================
 
+//create empty arrays
 if (!localStorage.getItem('watchedList')) {
   localStorage.setItem('watchedList', JSON.stringify(new Array()));
 }

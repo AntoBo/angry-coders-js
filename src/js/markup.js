@@ -43,4 +43,7 @@ export default class Markup {
   static drawModal(data) {
     this.modalEl.innerHTML = templateModalMarkup(data);
   }
+  static drawDevsModal() {
+    this.modalEl.innerHTML = `<p>Developers</p><ul><li>Anton Bondarenko</li><li>Anton Tagirov</li><li><Natalia Travetskaya</li></ul>`;
+  }
 }
