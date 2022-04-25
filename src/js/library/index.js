@@ -28,8 +28,8 @@ function getDataToDrawPage(data, page) {
 }
 
 function onClick(event) {
-  //clear gallery
-  // Markup.galleryEl.innerHTML = Markup.LIB_EMPTY_MESSAGE;
+  // clear gallery
+  Markup.galleryEl.innerHTML = '';
   //switch buttons styles
   document.querySelectorAll('.btn__library').forEach(el => el.classList.remove('button__checked'));
   event.target.classList.add('button__checked');
