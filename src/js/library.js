@@ -11,7 +11,8 @@ export default class LocalStorageAPI {
     if (listName === this.WATCHED) {
       // remove item
       if (watchedList.find(el => el.id === movieObj.id)) {
-        watchedList.splice(watchedList.indexOf(movieObj), 1);
+        const movieDel = watchedList.find(el => el.id === movieObj.id);
+        watchedList.splice(watchedList.indexOf(movieDel), 1);
         localStorage.setItem(this.WATCHED, JSON.stringify(watchedList));
         toWatchedList.textContent = 'add to watched';
         return;
@@ -28,7 +29,8 @@ export default class LocalStorageAPI {
     if (listName === this.QUEUE) {
       // remove item
       if (queueList.find(el => el.id === movieObj.id)) {
-        queueList.splice(queueList.indexOf(movieObj), 1);
+        const movieDel = queueList.find(el => el.id === movieObj.id);
+        queueList.splice(queueList.indexOf(movieDel), 1);
         localStorage.setItem(this.QUEUE, JSON.stringify(queueList));
         toQueueList.textContent = 'add to queue';
         return;

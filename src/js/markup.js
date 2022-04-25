@@ -11,6 +11,7 @@ export default class Markup {
     '<p class="js-library-message">Choose the movies on homepage please</>';
 
   static drawGallery(data) {
+    this.galleryEl.innerHTML = '';
     data[0].data.results.forEach(el => {
       //put data to format
       //poster
@@ -38,6 +39,7 @@ export default class Markup {
     this.galleryEl.innerHTML = templateCard(data[0].data.results);
   }
   static drawLibrary(data) {
+    this.galleryEl.innerHTML = '';
     this.galleryEl.innerHTML = templateCard(data);
   }
   static drawModal(data) {
