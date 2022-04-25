@@ -1,0 +1,43 @@
+body {
+  display: flex;
+  flex-direction: column;
+  background-color: $main-bg-color;
+  font-family: Roboto, sans-serif;
+  min-height: 100vh;
+
+  @include font-style(12px, 500, 1.67, null, $main-text-color);
+}
+
+main {
+  flex-grow: 1;
+}
+
+link {
+  text-decoration: none;
+
+  &:focus-visible {
+    outline: none;
+  }
+
+  &:visited {
+    text-decoration: none;
+    color: currentColor;
+  }
+}
+
+.list {
+  list-style: none;
+  fill: $main-text-color;
+}
+
+.section {
+  padding: 20px 0;
+
+  @include mq(tablet) {
+    padding: 60px 0;
+  }
+}
+
+.no-scroll {
+  overflow: hidden;
+}
