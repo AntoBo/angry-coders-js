@@ -36,6 +36,11 @@ link {
   @include mq(tablet) {
     padding: 60px 0;
   }
+
+  & .section-headre-hidden {
+    position: fixed;
+    transform: scale(0);
+  }
 }
 
 .no-scroll {

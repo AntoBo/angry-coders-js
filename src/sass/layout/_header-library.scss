@@ -3,26 +3,21 @@
   background-image: url('../images/bg-header/bg-library-tel.jpg');
 
   @include mq(retina) {
-    ackground-size: cover;
     background-image: url('../images/bg-header/bg-library-tel@2x.jpg');
   }
 
   @include mq(tablet) {
-    background-size: cover;
     background-image: url('../images/bg-header/bg-library-tabl.jpg');
 
     @include mq(retina) {
-      ackground-size: cover;
       background-image: url('../images/bg-header/bg-library-tabl@2x.jpg');
     }
   }
 
   @include mq(desktop) {
-    background-size: cover;
     background-image: url('../images/bg-header/bg-library-dt.jpg');
 
     @include mq(retina) {
-      background-size: cover;
       background-image: url('../images/bg-header/bg-library-dt@2x.jpg');
     }
   }
@@ -55,7 +50,7 @@
     justify-content: flex-end;
   }
 
-  &__list {
+  &__link {
     font-family: 'Roboto';
     font-style: normal;
     font-weight: 500;
@@ -63,10 +58,9 @@
     line-height: 14px;
     text-transform: uppercase;
     color: $white-text-color;
-
-    &:last-child {
-      margin-left: 40px;
-    }
+  }
+  &__list:not(:last-child) {
+    margin-right: 40px;
   }
 }
 

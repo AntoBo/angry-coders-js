@@ -12,7 +12,7 @@ import * as TUI from '../pagination';
 //get controls
 const watchedBtnEl = document.querySelector('[name="watchedList"]');
 const queueBtnEl = document.querySelector('[name="queueList"]');
-Markup.galleryEl.innerHTML = Markup.LIB_EMPTY_MESSAGE;
+// Markup.galleryEl.innerHTML = Markup.LIB_EMPTY_MESSAGE;
 
 watchedBtnEl.addEventListener('click', onClick);
 queueBtnEl.addEventListener('click', onClick);
@@ -29,7 +29,7 @@ function getDataToDrawPage(data, page) {
 
 function onClick(event) {
   //clear gallery
-  Markup.galleryEl.innerHTML = Markup.LIB_EMPTY_MESSAGE;
+  // Markup.galleryEl.innerHTML = Markup.LIB_EMPTY_MESSAGE;
   //switch buttons styles
   document.querySelectorAll('.btn__library').forEach(el => el.classList.remove('button__checked'));
   event.target.classList.add('button__checked');

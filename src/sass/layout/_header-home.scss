@@ -48,7 +48,7 @@
     justify-content: flex-end;
   }
 
-  &__list {
+  &__link {
     font-family: 'Roboto';
     font-style: normal;
     font-weight: 500;
@@ -56,10 +56,9 @@
     line-height: 14px;
     text-transform: uppercase;
     color: $white-text-color;
-
-    &:last-child {
-      margin-left: 40px;
-    }
+  }
+  &__list:not(:last-child) {
+    margin-right: 40px;
   }
 
   &__btn {
@@ -94,6 +93,7 @@
   }
 
   &__input {
+    padding-left: 5px;
     width: 280px;
     height: 20px;
 
