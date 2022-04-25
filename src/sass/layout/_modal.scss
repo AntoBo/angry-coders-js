@@ -33,7 +33,7 @@
     display: flex;
     max-width: 814px;
     width: 100%;
-    height: 558px;
+    // height: 558px;
   }
 }
 
@@ -144,20 +144,4 @@
 
 .js-modal {
   overflow: auto;
-  display: block;
-}
-.footer__link {
-  font-family: 'Roboto';
-  font-weight: 500;
-  font-size: 16px;
-  line-height: 20px;
-  font-style: italic;
-  color: $accent-text-color;
-}
-.footer__link__developers {
-  font-family: 'Roboto';
-  font-weight: 500;
-  font-size: 16px;
-  line-height: 20px;
-  font-style: italic;
 }
