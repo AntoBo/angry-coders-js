@@ -4,9 +4,9 @@
         <img class="card__img" src="{{poster_path}}" alt="{{title}}"/>
         <h2 class="card__title">{{title}}</h2>
         <div class="card__content-wrapper">
-          <p class="card__genre">
-{{#each genre_ids}} {{this}}{{#if @last}}{{else}},&nbsp;{{/if}}{{/each}}</p>&nbsp;|&nbsp;
-          <p class="card__year">{{release_date}}</p>
+          <p>
+{{#each genre_ids}} {{this}}{{#if @last}}{{else}},&nbsp;{{/if}}{{/each}}&nbsp;|&nbsp;
+          {{release_date}}</p>
         </div>
 </li>
 {{/each}}

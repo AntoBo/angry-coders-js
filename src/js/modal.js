@@ -27,8 +27,7 @@ export default class Modal {
     if (event.target.nodeName === 'UL' || event.target.nodeName === 'P') {
       return;
     }
-    //take controls
-    this.backdrop.classList.toggle('is-hidden');
+    this.backdrop.classList.remove('is-hidden');
     document.body.classList.add('no-scroll');
     window.addEventListener('keydown', this.closeModalByEsc.bind(this));
     //find card to draw modal
@@ -71,7 +70,7 @@ export default class Modal {
   }
 
   modalClose() {
-    this.backdrop.classList.toggle('is-hidden');
+    this.backdrop.classList.add('is-hidden');
     document.body.classList.remove('no-scroll');
     window.removeEventListener('keydown', this.closeModalByEsc.bind(this));
   }
