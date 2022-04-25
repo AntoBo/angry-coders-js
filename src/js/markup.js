@@ -44,11 +44,11 @@ export default class Markup {
     this.modalEl.innerHTML = templateModalMarkup(data);
   }
   static drawDevsModal() {
-    this.modalEl.innerHTML = `<p class="footer__link">Developers:</p>
+    this.modalEl.innerHTML = `<div class="developers-wrap"><p>Developers:</p>
     <ul>
-    <li class="footer__link__developers">Anton Bondarenko</li>
-    <li class="footer__link__developers">Anton Tagirov</li>
-    <li class="footer__link__developers">Natalia Travetska</li>
-    </ul>`;
+    <li>Anton Bondarenko</li>
+    <li>Anton Tagirov</li>
+    <li>Natalia Travetska</li>
+    </ul></div>`;
   }
 }
