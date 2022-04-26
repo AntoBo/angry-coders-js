@@ -14,6 +14,7 @@ export default class LocalStorageAPI {
         const movieDel = watchedList.find(el => el.id === movieObj.id);
         watchedList.splice(watchedList.indexOf(movieDel), 1);
         localStorage.setItem(this.WATCHED, JSON.stringify(watchedList));
+        //Markup.draw...
         toWatchedList.textContent = 'add to watched';
         return;
       }
