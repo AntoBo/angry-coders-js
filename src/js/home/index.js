@@ -41,8 +41,10 @@ function onLoadPage(page) {
     })
     .catch(err => {
       err;
+    })
+    .finally(() => {
+      Block.remove('.loading-block');
     });
-  Block.remove('.loading-block');
 }
 onLoadPage(1);
 
@@ -79,8 +81,10 @@ function onSearchSubmit(event) {
     })
     .catch(err => {
       err;
+    })
+    .finally(() => {
+      Block.remove('.loading-block');
     });
-  Block.remove('.loading-block');
 }
 
 //fetch movies on pagination in trending list
